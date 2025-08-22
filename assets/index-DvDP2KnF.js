@@ -50,7 +50,7 @@ Error generating stack: `+u.message+`
 `)}function nv(){return[`
 Available commands:`,"  help        — show this help","  projects    — list featured projects","  about       — short bio","  skills      — tech stack","  links       — GitHub/Discord","  clear       — clear the screen","  cd <path>   — change directory (cosmetic)","  open <url>  — open a link",""]}function fv(){return[`
 about.txt:`,"  I’m a developer that focus on Backend, Game development with roblox studio & cybersecurity.","  Sometimes i like to learn physics to spare time",""]}function Lo(){return[`
-skills.json:`,"  [C, C++, Python, PHP, Linux, Lua]",""]}function cv(){const z=[{n:"discord-bot",d:"Moderasi + musik + AI Gemini",t:"Python, discord.py",u:"https://github.com/Swag-iwnl-m1/Dampang-Bot"}],B=`
+skills.json:`,"  [C, C++, Python, PHP, Linux, Lua]",""]}function cv(){const z=[{n:"discord-bot",d:"Moderation + music + AI Gemini",t:"Python, discord.py",u:"https://github.com/Swag-iwnl-m1/Dampang-Bot"}],B=`
 ./projects (`+z.length+`):
 `,L=z.map(m=>`  - ${m.n}
       ${m.d}
