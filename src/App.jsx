@@ -183,7 +183,7 @@ function renderSkills() {
 
 function renderProjects() {
   const list = [
-    { n: "discord-bot", d: "Moderasi + musik + AI Gemini", t: "Python, discord.py", u: "https://github.com/Swag-iwnl-m1/Dampang-Bot" }
+    { n: "discord-bot", d: "Moderation + music + AI Gemini", t: "Python, discord.py", u: "https://github.com/Swag-iwnl-m1/Dampang-Bot" }
   ];
   const header = "\n./projects (" + list.length + "):\n";
   const lines = list.map((p) => `  - ${p.n}\n      ${p.d}\n      tech: ${p.t}\n      open: ${p.u}`);
