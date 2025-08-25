@@ -234,18 +234,20 @@ function resolveCwd(prev, path) {
   return `${prev}/${path}`;
 }
 
+// 3) Ganti openCmd (pastikan di file cuma ADA SATU fungsi openCmd)
 function openCmd(arg) {
   const q = (arg || "").trim().toLowerCase();
   if (!q) return "Usage: open <url|key>";
 
-  // cari di projects dulu
-  let found = PROJECTS.find(p => p.key.toLowerCase() === q);
-  if (!found) {
-    // kalau nggak ada, coba cek LINKS
-    found = LINKS.find(l => l.key.toLowerCase() === q);
-  }
+  // coba match ke PROJECTS atau LINKS
+  const proj = PROJECTS.find(p => p.key.toLowerCase() === q);
+  const link = LINKS.find(l => l.key.toLowerCase() === q);
+  let target = proj?.url || link?.url || arg.trim();
 
-  const target = found ? found.url : q;
+  // kalau user ketik domain tanpa skema (contoh: github.com/xxx), tambahin https://
+  if (!/^https?:\/\//i.test(target) && /\.[a-z]{2,}/i.test(target)) {
+    target = "https://" + target;
+  }
 
   try {
     window.open(target, "_blank", "noopener,noreferrer");
@@ -254,4 +256,5 @@ function openCmd(arg) {
     return `failed to open: ${target}`;
   }
 }
+
 
