@@ -181,39 +181,18 @@ function renderSkills() {
   ];
 }
 
-const PROJECTS = [
-  {
-    key: "discord-bot",
-    name: "discord-bot",
-    desc: "Moderation + music + AI Gemini",
-    tech: "Python, discord.py",
-    url: "https://github.com/Swag-iwnl-m1/Dampang-Bot",
-  },
-  {
-    key: "roblox-game",
-    name: "Roblox game",
-    desc: "Make horror game about my campus", 
-    tech: "Lua, Roblox Studio",
-    url: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597",
-  },
-];
 
-
-function short(u, max = 60) {
-  if (!u) return "";
-  return u.length > max ? u.slice(0, max) + "..." : u;
-}
 
 function renderProjects() {
-  const header = `\n./projects (${PROJECTS.length}):\n`;
-  const lines = PROJECTS.map(
-    (p) => `  - ${p.name}
-      ${p.desc}
-      tech: ${p.tech}
-      open: ${short(p.url)}`
-  );
-  return [header, ...lines, ""];
+  const list = [
+    { n: "discord-bot", d: "Moderation + music + AI Gemini", t: "Python, discord.py", u: "https://github.com/Swag-iwnl-m1/Dampang-Bot" },
+    { n: "Roblox game", d: "Make horror game about my campus", t: "Lua, Roblox studio", u: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" }
+  ];
+  const header = "\n./projects (" + list.length + "):\n";
+  const lines = list.map((p) => `  - ${p.n}\n      ${p.d}\n      tech: ${p.t}\n      open: ${p.u}`);
+  return [header, ...lines, ""]; 
 }
+
 
 function renderLinks() {
   return [
