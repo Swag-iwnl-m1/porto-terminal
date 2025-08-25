@@ -1,5 +1,22 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
+const PROJECTS = [
+  {
+    key: "discord-bot",
+    name: "discord-bot",
+    desc: "Moderation + music + AI Gemini",
+    tech: "Python, discord.py",
+    url: "https://github.com/Swag-iwnl-m1/Dampang-Bot",
+  },
+  {
+    key: "roblox-game",
+    name: "Roblox game",
+    desc: "Make horror game about my campus",
+    tech: "Lua, Roblox studio",
+    url: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597",
+  },
+];
+
 // Terminal‑style portfolio — commands: help, projects, about, skills, links, clear, cd <path>, open <url>
 export default function App() {
   const [lines, setLines] = useState([welcomeBanner()]);
@@ -184,25 +201,26 @@ function renderSkills() {
 
 
 function renderProjects() {
-  const list = [
-    { n: "discord-bot", d: "Moderation + music + AI Gemini", t: "Python, discord.py", u: "https://github.com/Swag-iwnl-m1/Dampang-Bot" },
-    { n: "Roblox game", d: "Make horror game about my campus", t: "Lua, Roblox studio", u: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" }
-  ];
-  const header = "\n./projects (" + list.length + "):\n";
-  const lines = list.map((p) => `  - ${p.n}\n      ${p.d}\n      tech: ${p.t}\n      open: ${p.u}`);
-  return [header, ...lines, ""]; 
+  const header = `\n./projects (${PROJECTS.length}):\n`;
+  const rows = PROJECTS.map(
+    (p) => `  - ${p.name}
+      ${p.desc}
+      tech: ${p.tech}
+      open: ${short(p.url)}`
+  );
+  return [header, ...rows, ""];
 }
 
 function renderLinks() {
   return [
     "\nlinks:",
     "  GitHub   → https://github.com/swag-iwnl-m1",
-    "  Discord  → add kido8518 "
+    "  Discord  → add kido8518",
+    "",
   ];
 }
 
-
-
+/* ===================== UTILS ===================== */
 function resolveCwd(prev, path) {
   if (!path || path === ".") return prev;
   if (path === "..") return prev.split("/").slice(0, -1).join("/") || "~";
@@ -211,12 +229,7 @@ function resolveCwd(prev, path) {
   return `${prev}/${path}`;
 }
 
-
-const PROJECTS = [
-  { key: "discord-bot", url: "https://github.com/Swag-iwnl-m1/Dampang-Bot" },
-  { key: "roblox-game", url: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" },
-];
-
+/* open <url|project-key> */
 function openCmd(arg) {
   const q = (arg || "").trim();
   if (!q) return "Usage: open <url|project-key>";
@@ -233,4 +246,3 @@ function openCmd(arg) {
     return `failed to open: ${target}`;
   }
 }
-
