@@ -168,7 +168,7 @@ function renderAbout() {
   return [
     "\nabout.txt:",
     "  I’m a developer that focus on Backend, Game development with roblox studio & cybersecurity.",
-    "  Sometimes i like to learn physics to spare time",
+    "  Sometimes i like to learn physics and math to spare time",
     "",
   ];
 }
@@ -184,7 +184,7 @@ function renderSkills() {
 function renderProjects() {
   const list = [
     { n: "discord-bot", d: "Moderation + music + AI Gemini", t: "Python, discord.py", u: "https://github.com/Swag-iwnl-m1/Dampang-Bot" },
-    { n: "Roblox game", d: "Make horror game about my camput", t: "Lua, Roblox studio", u: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" }
+    { n: "Roblox game", d: "Make horror game about my campus", t: "Lua, Roblox studio", u: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" }
   ];
   const header = "\n./projects (" + list.length + "):\n";
   const lines = list.map((p) => `  - ${p.n}\n      ${p.d}\n      tech: ${p.t}\n      open: ${p.u}`);
