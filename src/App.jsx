@@ -215,26 +215,6 @@ function renderProjects() {
   return [header, ...lines, ""];
 }
 
-function openCmd(arg) {
-  const q = (arg || "").trim();
-  if (!q) return "Usage: open <url|project-key>";
-
-  // match by key atau name
-  const found = PROJECTS.find(
-    (p) =>
-      p.key.toLowerCase() === q.toLowerCase() ||
-      p.name.toLowerCase() === q.toLowerCase()
-  );
-  const target = found ? found.url : q;
-
-  try {
-    window.open(target, "_blank", "noopener,noreferrer");
-    return `opening → ${target}`;
-  } catch {
-    return `failed to open: ${target}`;
-  }
-}
-
 function renderLinks() {
   return [
     "\nlinks:",
