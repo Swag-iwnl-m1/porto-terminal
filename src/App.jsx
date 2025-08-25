@@ -234,14 +234,17 @@ function resolveCwd(prev, path) {
   return `${prev}/${path}`;
 }
 
-/* open <url|project-key> */
 function openCmd(arg) {
-  const q = (arg || "").trim();
-  if (!q) return "Usage: open <url|project-key>";
+  const q = (arg || "").trim().toLowerCase();
+  if (!q) return "Usage: open <url|key>";
 
-  const found = PROJECTS.find(
-    (p) => p.key.toLowerCase() === q.toLowerCase()
-  );
+  // cari di projects dulu
+  let found = PROJECTS.find(p => p.key.toLowerCase() === q);
+  if (!found) {
+    // kalau nggak ada, coba cek LINKS
+    found = LINKS.find(l => l.key.toLowerCase() === q);
+  }
+
   const target = found ? found.url : q;
 
   try {
@@ -251,3 +254,4 @@ function openCmd(arg) {
     return `failed to open: ${target}`;
   }
 }
+
