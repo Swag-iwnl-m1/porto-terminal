@@ -193,6 +193,25 @@ function renderProjects() {
   return [header, ...lines, ""]; 
 }
 
+function renderLinks() {
+  return [
+    "\nlinks:",
+    "  GitHub   → https://github.com/swag-iwnl-m1",
+    "  Discord  → add kido8518 "
+  ];
+}
+
+
+
+function resolveCwd(prev, path) {
+  if (!path || path === ".") return prev;
+  if (path === "..") return prev.split("/").slice(0, -1).join("/") || "~";
+  if (path.startsWith("/")) return path;
+  if (path.startsWith("~")) return path;
+  return `${prev}/${path}`;
+}
+
+
 const PROJECTS = [
   { key: "discord-bot", url: "https://github.com/Swag-iwnl-m1/Dampang-Bot" },
   { key: "roblox-game", url: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" },
@@ -214,33 +233,4 @@ function openCmd(arg) {
     return `failed to open: ${target}`;
   }
 }
-
-
-function renderLinks() {
-  return [
-    "\nlinks:",
-    "  GitHub   → https://github.com/swag-iwnl-m1",
-    "  Discord  → add kido8518 "
-  ];
-}
-
-
-
-function resolveCwd(prev, path) {
-  if (!path || path === ".") return prev;
-  if (path === "..") return prev.split("/").slice(0, -1).join("/") || "~";
-  if (path.startsWith("/")) return path;
-  if (path.startsWith("~")) return path;
-  return `${prev}/${path}`;
-}
-
-function openCmd(url) {
-  const u = (url || "").trim();
-  if (!u) return "Usage: open <url>";
-  try {
-    window.open(u, "_blank", "noopener,noreferrer");
-    return `opening → ${u}`;
-  } catch (e) {
-    return `failed to open: ${u}`;
-  }
 }
