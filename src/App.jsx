@@ -17,6 +17,10 @@ const PROJECTS = [
   },
 ];
 
+const LINKS = [
+  { key: "github", url: "https://github.com/swag-iwnl-m1" },
+];
+
 // Terminal‑style portfolio — commands: help, projects, about, skills, links, clear, cd <path>, open <url>
 export default function App() {
   const [lines, setLines] = useState([welcomeBanner()]);
@@ -215,7 +219,7 @@ function renderProjects() {
 function renderLinks() {
   return [
     "\nlinks:",
-    "  GitHub   → https://github.com/swag-iwnl-m1",
+    "  GitHub   → type: open github",
     "  Discord  → add kido8518",
     "",
   ];
