@@ -206,7 +206,7 @@ function renderProjects() {
     (p) => `  - ${p.name}
       ${p.desc}
       tech: ${p.tech}
-      open: ${short(p.url)}`
+      type: open ${p.key}`
   );
   return [header, ...rows, ""];
 }
