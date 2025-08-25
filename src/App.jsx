@@ -193,6 +193,28 @@ function renderProjects() {
   return [header, ...lines, ""]; 
 }
 
+const PROJECTS = [
+  { key: "discord-bot", url: "https://github.com/Swag-iwnl-m1/Dampang-Bot" },
+  { key: "roblox-game", url: "https://www.roblox.com/share?code=b07d1de09e05904082cd79912dc4a567&type=ExperienceDetails&stamp=1756125186597" },
+];
+
+function openCmd(arg) {
+  const q = (arg || "").trim();
+  if (!q) return "Usage: open <url|project-key>";
+
+  const found = PROJECTS.find(
+    (p) => p.key.toLowerCase() === q.toLowerCase()
+  );
+  const target = found ? found.url : q;
+
+  try {
+    window.open(target, "_blank", "noopener,noreferrer");
+    return `opening → ${target}`;
+  } catch {
+    return `failed to open: ${target}`;
+  }
+}
+
 
 function renderLinks() {
   return [
