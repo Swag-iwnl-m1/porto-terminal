@@ -211,6 +211,7 @@ function renderProjects() {
   return [header, ...rows, ""];
 }
 
+
 function renderLinks() {
   return [
     "\nlinks:",
