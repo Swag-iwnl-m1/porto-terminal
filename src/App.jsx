@@ -233,4 +233,4 @@ function openCmd(arg) {
     return `failed to open: ${target}`;
   }
 }
-}
+
